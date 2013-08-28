@@ -23,6 +23,7 @@
             <result name="login" type="redirect">/nosession.jsp</result>
             <result name="500" type="redirect">/500.jsp</result>
             <result name="404" type="redirect">/404.jsp</result>
+            <result name="403" type="redirect">/403.jsp</result>
 
         </global-results>
         <global-exception-mappings>
