@@ -1,0 +1,1 @@
+<a href="hello.shtml?param=hello terse">hello</a>

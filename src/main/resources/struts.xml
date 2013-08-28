@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="terse" extends="system" namespace="/">
+        <interceptors>
+            <interceptor-stack name="platformBaseStack">
+                <interceptor-ref name="baseStack" />
+                <!--
+                <interceptor-ref name="recordInterceptor"/>
+
+                -->
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="platformBaseStack" />
+
+        <default-action-ref name="pagenotfound"></default-action-ref>
+
+        <global-results>
+            <result name="login" type="redirect">/nosession.jsp</result>
+            <result name="500" type="redirect">/500.jsp</result>
+            <result name="404" type="redirect">/404.jsp</result>
+            <result name="403" type="redirect">/403.jsp</result>
+
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping result="500" exception="java.lang.Exception"/>
+            <exception-mapping result="404" exception="java.lang.NoSuchMethodException"/>
+        </global-exception-mappings>
+
+        <action name="pagenotfound">
+            <result type="redirect">/404.jsp</result>
+        </action>
+
+    </package>
+</struts>
