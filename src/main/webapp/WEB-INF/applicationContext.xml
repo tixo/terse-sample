@@ -2,11 +2,99 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
-       default-autowire="byName" default-lazy-init="true">
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>classpath:jdbc.properties</value>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+
+        <property name="driverClassName">
+            <value>${driverClassName}</value>
+        </property>
+        <property name="url">
+            <value>${url}</value>
+        </property>
+        <property name="username">
+            <value>${user}</value>
+        </property>
+        <property name="password">
+            <value>${password}</value>
+        </property>
+        <property name="filters" value="stat" />
+
+        <property name="maxActive" value="5" />
+        <property name="initialSize" value="1" />
+        <property name="maxWait" value="60000" />
+        <property name="minIdle" value="1" />
+
+        <property name="timeBetweenEvictionRunsMillis" value="3000" />
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+
+        <property name="validationQuery" value="SELECT 'x'" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+        <property name="defaultAutoCommit">
+            <value>false</value>
+        </property>
+    </bean>
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource" />
+        </property>
+        <property name="mappingLocations">
+            <list>
+                <value>classpath*:/org/terse/samples/*/entity/*.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.dialect">${dialect}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory">
+            <ref local="sessionFactory" />
+        </property>
+    </bean>
+
+    <aop:config>
+    <!--配置在org.terse.samples下的所有包下的所有service包下的所有以Service结尾的类下的所有方法执行动态事物-->
+    <aop:advisor advice-ref="txAdvice"
+        pointcut="execution(* org.terse.samples.*.service.*Service.*(..)) "/>
+    </aop:config>
+
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="create*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="edit*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+        </tx:attributes>
+    </tx:advice>
+    <bean id="baseDao" class="org.terse.dao.BaseDaoImpl">
+        <property name="sessionFactory">
+            <ref local="sessionFactory" />
+        </property>
+    </bean>
+
+    <bean id="postService" class="org.terse.samples.guestbook.service.PostService" />
+    <bean id="userService" class="org.terse.samples.guestbook.service.UserService" />
 
 
+    <bean id="wrapperService" class="org.terse.samples.firstapp.service.ParamWraperService"/>
 </beans>

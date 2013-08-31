@@ -1,6 +1,7 @@
 package org.terse.samples.firstapp;
 
 
+import org.terse.samples.firstapp.service.IParamWrapper;
 import org.terse.struts.BaseAction;
 import org.terse.struts.Result;
 
@@ -18,6 +19,11 @@ import org.terse.struts.Result;
 public class HelloAction extends BaseAction {
 
 	private String param;
+	private IParamWrapper wrapperService;
+
+	public void setWrapperService(IParamWrapper wrapperService) {
+		this.wrapperService = wrapperService;
+	}
 
 	public String getParam() {
 		return param;
@@ -28,6 +34,7 @@ public class HelloAction extends BaseAction {
 	}
 	@Override
 	public Result doGet() throws Exception {
+		setParam(wrapperService.wrap(getParam()));
 		return success();
 	}
 

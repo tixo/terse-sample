@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="org.terse.samples.guestbook.entity">
+    <class name="Post" table="post">
+        <id name="id" type="string" column="id">
+            <generator class="uuid.hex" />
+        </id>
+        <property name="title" column="title" />
+        <property name="body" column="body" />
+        <property name="timestamp" column="timestamp" />
+
+        <many-to-one name="user" class="User"  column="userId"/>
+    </class>
+</hibernate-mapping>

@@ -16,9 +16,7 @@
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="platformBaseStack" />
-
         <default-action-ref name="pagenotfound"></default-action-ref>
-
         <global-results>
             <result name="login" type="redirect">/nosession.jsp</result>
             <result name="500" type="redirect">/500.jsp</result>
@@ -34,6 +32,7 @@
         <action name="pagenotfound">
             <result type="redirect">/404.jsp</result>
         </action>
-
     </package>
 </struts>
+
+
