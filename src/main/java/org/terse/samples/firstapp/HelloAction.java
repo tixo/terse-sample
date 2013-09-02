@@ -1,7 +1,7 @@
 package org.terse.samples.firstapp;
 
 
-import org.terse.samples.firstapp.service.IParamWrapper;
+import org.terse.samples.firstapp.service.IParamWrapperService;
 import org.terse.struts.BaseAction;
 import org.terse.struts.Result;
 
@@ -19,9 +19,9 @@ import org.terse.struts.Result;
 public class HelloAction extends BaseAction {
 
 	private String param;
-	private IParamWrapper wrapperService;
+	private IParamWrapperService wrapperService;
 
-	public void setWrapperService(IParamWrapper wrapperService) {
+	public void setWrapperService(IParamWrapperService wrapperService) {
 		this.wrapperService = wrapperService;
 	}
 

@@ -7,7 +7,7 @@ package org.terse.samples.firstapp.service;
  * @version 1.0
  */
 
-public class ParamWraperService implements IParamWrapper{
+public class ParamWraperService implements IParamWrapperService {
 	@Override
 	public String wrap(String param) throws Exception {
 		return param+"!!!!";

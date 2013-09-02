@@ -7,6 +7,6 @@ package org.terse.samples.firstapp.service;
  * @version 1.0
  */
 
-public interface IParamWrapper {
+public interface IParamWrapperService {
 	String wrap(String param) throws Exception;
 }
