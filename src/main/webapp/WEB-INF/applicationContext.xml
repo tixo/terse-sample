@@ -84,6 +84,7 @@
             <tx:method name="create*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
             <tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
             <tx:method name="edit*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
+            <tx:method name="remove*" propagation="REQUIRED" rollback-for="java.lang.Exception"/>
         </tx:attributes>
     </tx:advice>
     <bean id="baseDao" class="org.terse.dao.BaseDaoImpl">
