@@ -175,5 +175,12 @@
             <artifactId>struts2-spring-plugin</artifactId>
             <version>2.3.15.1</version>
         </dependency>
+
+        <!-- sitemesh dependency -->
+        <dependency>
+            <groupId>opensymphony</groupId>
+            <artifactId>sitemesh</artifactId>
+            <version>2.4.2</version>
+        </dependency>
     </dependencies>
 </project>
