@@ -16,6 +16,12 @@
         <filter-name>struts-prepare</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareFilter</filter-class>
     </filter>
+
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+    </filter>
+
     <filter>
         <filter-name>struts-execute</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsExecuteFilter</filter-class>
@@ -24,27 +30,70 @@
         <filter-name>struts-prepare</filter-name>
         <url-pattern>*.shtml</url-pattern>
     </filter-mapping>
+    <!-- sitemesh filter-->
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>*.shtml</url-pattern>
+    </filter-mapping>
+
     <filter-mapping>
         <filter-name>struts-execute</filter-name>
         <url-pattern>*.shtml</url-pattern>
     </filter-mapping>
-
+    <!--spring listener -->
     <listener>
         <listener-class>org.terse.spring.ContextListener</listener-class>
     </listener>
+    <!--struts listener for sitemesh freemarker-->
+    <listener>
+        <listener-class>org.apache.struts2.dispatcher.ng.listener.StrutsListener</listener-class>
+    </listener>
 
-    <!--<filter>-->
-        <!--<filter-name>encodingFilter</filter-name>-->
-        <!--<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
-        <!--<init-param>-->
-            <!--<param-name>encoding</param-name>-->
-            <!--<param-value>UTF-8</param-value>-->
-        <!--</init-param>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-        <!--<filter-name>encodingFilter</filter-name>-->
-        <!--<url-pattern>/*</url-pattern>-->
-    <!--</filter-mapping>-->
+    <!-- sitemesh freemarker-->
+    <servlet>
+        <servlet-name>sitemesh-freemarker</servlet-name>
+        <servlet-class>
+            com.opensymphony.module.sitemesh.freemarker.FreemarkerDecoratorServlet</servlet-class>
+        <init-param>
+            <param-name>TemplatePath</param-name>
+            <param-value>/</param-value>
+        </init-param>
+        <init-param>
+            <param-name>default_encoding</param-name>
+            <param-value>utf8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>NoCache</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ContentType</param-name>
+            <param-value>text/html; charset=UTF-8</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sitemesh-freemarker</servlet-name>
+        <url-pattern>*.shtml</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sitemesh-freemarker</servlet-name>
+        <url-pattern>*.ftl</url-pattern>
+    </servlet-mapping>
+
+    <!-- spring encode filter -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>

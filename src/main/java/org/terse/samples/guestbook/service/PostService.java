@@ -64,12 +64,11 @@ public class PostService extends BaseService implements IPostService{
 			hql += "and p.timestamp < ?";
 			params.add(condition.getEnd());
 		}
-
 		return baseDao.findEntity(hql,params.toArray(),Post.class);
 	}
 
 	@Override
-	public Page searchPosts(PostCondition condition,int currentPage,int pageSize) throws Exception {
+	public Page searchPosts(PostCondition condition, int pageSize, int currentPage) throws Exception {
 		ArrayList params = new ArrayList();
 		String hql = "from Post p where 1=1";
 		if(StringUtils.isNotBlank(condition.getTitle())) {
@@ -90,7 +89,6 @@ public class PostService extends BaseService implements IPostService{
 			hql += " and p.timestamp < ?";
 			params.add(condition.getEnd());
 		}
-
-		return baseDao.search(hql, params.toArray(), currentPage, pageSize);
+		return baseDao.search(hql, params.toArray(), pageSize, currentPage);
 	}
 }

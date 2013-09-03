@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS `post`;
 CREATE TABLE `post` (
   `id` varchar(32) NOT NULL,
   `body` varchar(255) default NULL,
-  `beginTime` datetime default NULL,
+  `timestamp` datetime default NULL,
   `title` varchar(255) default NULL,
   `userId` varchar(32) NOT NULL,
   PRIMARY KEY  (`id`),

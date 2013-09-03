@@ -34,5 +34,5 @@ public interface IPostService {
 	 *
 	 * @return 分页
 	 */
-	Page searchPosts(PostCondition condition,int currentPage,int pageSize) throws Exception;
+	Page searchPosts(PostCondition condition, int pageSize, int currentPage) throws Exception;
 }

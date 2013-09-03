@@ -3,6 +3,7 @@ package org.terse.samples.guestbook;
 import org.terse.samples.guestbook.entity.Post;
 import org.terse.samples.guestbook.entity.PostCondition;
 import org.terse.samples.guestbook.entity.User;
+import org.terse.struts.BaseView;
 import org.terse.util.Page;
 
 /**
@@ -12,7 +13,7 @@ import org.terse.util.Page;
  * @version 1.0
  */
 
-public class ParamView {
+public class ParamView extends BaseView{
 
 	public static final int PAGE_SIZE = 5;
 

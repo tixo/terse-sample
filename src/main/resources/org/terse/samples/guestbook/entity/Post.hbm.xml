@@ -11,6 +11,6 @@
         <property name="body" column="body" />
         <property name="timestamp" column="timestamp" />
 
-        <many-to-one name="user" class="User"  column="userId"/>
+        <many-to-one name="user" class="User"  column="userId" fetch="join" lazy="false"/>
     </class>
 </hibernate-mapping>

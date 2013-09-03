@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<decorators defaultdir="/WEB-INF/decorators">
+
+	<excludes>
+    </excludes>
+
+    <decorator name="list_create_edit_view" page="template_view.ftl">
+		<pattern>*/guestbook/*.shtml*</pattern>
+    </decorator>
+
+</decorators>

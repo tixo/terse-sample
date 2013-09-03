@@ -34,5 +34,5 @@ public interface IUserService {
 	 *
 	 * @return 分页
 	 */
-	Page searchUsers(User condition, int currentPage, int pageSize) throws Exception;
+	Page searchUsers(User condition, int pageSize, int currentPage) throws Exception;
 }

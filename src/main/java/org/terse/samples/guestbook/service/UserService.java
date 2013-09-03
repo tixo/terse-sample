@@ -57,7 +57,7 @@ public class UserService extends BaseService implements IUserService {
 	}
 
 	@Override
-	public Page searchUsers(User condition, int currentPage, int pageSize) throws Exception {
+	public Page searchUsers(User condition, int pageSize, int currentPage) throws Exception {
 		String hql = "from User u where 1=1";
 		ArrayList params = new ArrayList();
 		if(StringUtils.isNotBlank(condition.getName())){
@@ -68,6 +68,6 @@ public class UserService extends BaseService implements IUserService {
 			hql += "and u.email like ?";
 			params.add(wrapLikeSql(condition.getEmail()));
 		}
-		return baseDao.search(hql,params.toArray(),currentPage,pageSize);
+		return baseDao.search(hql,params.toArray(),pageSize,currentPage);
 	}
 }

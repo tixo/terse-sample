@@ -18,15 +18,18 @@ public class FindPostsAction extends BaseAction {
 		this.postService = postService;
 	}
 
-	private ParamView view = new ParamView();
+	private ParamView view;
 	public ParamView getView() {
+		if(null == view){
+			view = new ParamView();
+		}
 		return view;
 	}
 	public void setView(ParamView view) {
 		this.view = view;
 	}
 
-	private int pageNo = 1;
+	private int pageNo;
 	public int getPageNo() {
 		return pageNo;
 	}
@@ -36,7 +39,7 @@ public class FindPostsAction extends BaseAction {
 
 	@Override
 	public Result doGet() throws Exception {
-		getView().setPage(postService.searchPosts(getView().getPostCondition(), getPageNo(), getView().PAGE_SIZE));
+		getView().setPage(postService.searchPosts(getView().getPostCondition(), ParamView.PAGE_SIZE, getPageNo()));
 		return success();
 	}
 
