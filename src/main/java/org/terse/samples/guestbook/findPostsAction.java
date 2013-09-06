@@ -29,17 +29,22 @@ public class FindPostsAction extends BaseAction {
 		this.view = view;
 	}
 
-	private int pageNo;
-	public int getPageNo() {
-		return pageNo;
+	/**
+	 * 分页属性
+	 * 要支持分页，此属性必须，且必须为pageno
+	 *
+	 */
+	private int pageno;
+	public int getPageno() {
+		return pageno;
 	}
-	public void setPageNo(int pageNo) {
-		this.pageNo = pageNo;
+	public void setPageno(int pageno) {
+		this.pageno = pageno;
 	}
 
 	@Override
 	public Result doGet() throws Exception {
-		getView().setPage(postService.searchPosts(getView().getPostCondition(), ParamView.PAGE_SIZE, getPageNo()));
+		getView().setPage(postService.searchPosts(getView().getPostCondition(), ParamView.PAGE_SIZE, getPageno()));
 		return success();
 	}
 

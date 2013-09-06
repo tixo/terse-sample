@@ -6,12 +6,13 @@
 
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
-	<META HTTP-EQUIV="Expires" CONTENT="0"> 
-    
+	<META HTTP-EQUIV="Expires" CONTENT="0">
+
     	<title>留言板</title>
 
 	<link rel="stylesheet" type="text/css" href="${base}/resource/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="${base}/resource/css/bootstrap-theme.css">
+	<link rel="stylesheet" type="text/css" href="${base}/resource/css/terse.css">
 	<style>body{padding:0;}</style>
 	<script type="text/javascript" language="javascript" src="${base}/resource/js/bootstrap.js"></script>
     <script src="${base}/resource/js/jquery.js"></script>
@@ -25,4 +26,3 @@
     </div>
  </body>
 </html>
- 

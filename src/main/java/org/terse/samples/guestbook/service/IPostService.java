@@ -14,6 +14,7 @@ import org.terse.util.Page;
  */
 
 public interface IPostService {
+
 	void createPost(Post post) throws Exception;
 
 	void updatePost(Post post) throws Exception;

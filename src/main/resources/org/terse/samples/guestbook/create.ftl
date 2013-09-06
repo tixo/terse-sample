@@ -18,27 +18,27 @@
 	</script>
 </head>
 <body>
-<form id="createForm" class="form-horizontal" style="margin-top: 20px" method="post" action="create.shtml">
+<form id="createForm" class="form-horizontal" style="margin-top: 20px" method="post" action="create_post.shtml">
     <div class="form-group">
         <label class="col-lg-2 control-label">姓名</label>
         <div class="col-lg-6">
-            <input type="text require" class="form-control required" name="view.post.user.name">
+            <input type="text" class="form-control required" name="view.post.user.name">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputEmail1" class="col-lg-2 control-label ">邮件</label>
+        <label class="col-lg-2 control-label ">邮件</label>
         <div class="col-lg-6">
             <input type="email" class="form-control required email" name="view.post.user.email">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputEmail1" class="col-lg-2 control-label">标题</label>
+        <label class="col-lg-2 control-label">标题</label>
         <div class="col-lg-6">
             <input type="text" class="form-control required" name="view.post.title">
         </div>
     </div>
     <div class="form-group">
-        <label for="inputPassword1" class="col-lg-2 control-label">内容</label>
+        <label class="col-lg-2 control-label">内容</label>
         <div class="col-lg-6">
             <textarea class="form-control required" rows="15" name="view.post.body"></textarea>
         </div>

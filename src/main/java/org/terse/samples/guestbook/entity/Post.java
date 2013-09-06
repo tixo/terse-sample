@@ -11,7 +11,7 @@ import java.util.Date;
  * @version 1.0
  */
 
-public class Post implements Serializable{
+public class Post implements Serializable {
 	private String id;
 	private String title;
 	private String body;

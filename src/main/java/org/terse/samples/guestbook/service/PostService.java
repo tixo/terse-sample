@@ -47,21 +47,21 @@ public class PostService extends BaseService implements IPostService{
 		ArrayList params = new ArrayList();
 		String hql = "from Post p where 1=1";
 		if(StringUtils.isNotBlank(condition.getTitle())) {
-			hql += "and p.title like ?";
+			hql += " and p.title like ? ";
 			params.add(wrapLikeSql(condition.getTitle()));
 		}
 
 		if(StringUtils.isNotBlank(condition.getBody())) {
-			hql += "and p.body = like";
+			hql += " and p.body = like ";
 			params.add(wrapLikeSql(condition.getBody()));
 		}
 
 		if(StringUtils.isNotBlank(String.valueOf(condition.getBegin()))) {
-			hql += "and p.timestamp >= ?";
+			hql += " and p.timestamp >= ? ";
 			params.add(condition.getBegin());
 		}
 		if(StringUtils.isNotBlank(String.valueOf(condition.getEnd()))) {
-			hql += "and p.timestamp < ?";
+			hql += " and p.timestamp < ? ";
 			params.add(condition.getEnd());
 		}
 		return baseDao.findEntity(hql,params.toArray(),Post.class);
@@ -72,23 +72,25 @@ public class PostService extends BaseService implements IPostService{
 		ArrayList params = new ArrayList();
 		String hql = "from Post p where 1=1";
 		if(StringUtils.isNotBlank(condition.getTitle())) {
-			hql += " and p.title like ?";
+			hql += " and p.title like ? ";
 			params.add(wrapLikeSql(condition.getTitle()));
 		}
 
 		if(StringUtils.isNotBlank(condition.getBody())) {
-			hql += " and p.body like ?";
+			hql += " and p.body like ? ";
 			params.add(wrapLikeSql(condition.getBody()));
 		}
 
 		if(null != condition.getBegin()) {
-			hql += " and p.timestamp >= ?";
+			hql += " and p.timestamp >= ? ";
 			params.add(condition.getBegin());
 		}
 		if(null != condition.getEnd()) {
-			hql += " and p.timestamp < ?";
+			hql += " and p.timestamp < ? ";
 			params.add(condition.getEnd());
 		}
+		hql += " order by p.timestamp desc";
+
 		return baseDao.search(hql, params.toArray(), pageSize, currentPage);
 	}
 }

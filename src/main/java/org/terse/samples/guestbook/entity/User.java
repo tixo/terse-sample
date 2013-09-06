@@ -3,7 +3,7 @@ package org.terse.samples.guestbook.entity;
 import java.io.Serializable;
 
 /**
- * 创建人：xy
+ * 创建人：xy.
  * 创建时间：13-8-29
  *
  * @version 1.0

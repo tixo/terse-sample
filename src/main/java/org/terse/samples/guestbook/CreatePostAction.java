@@ -15,7 +15,7 @@ import org.terse.struts.Result;
  * @version 1.0
  */
 
-public class CreateAction extends BaseAction {
+public class CreatePostAction extends BaseAction {
 
 	private IPostService postService;
 	public void setPostService(IPostService postService) {

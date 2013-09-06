@@ -3,7 +3,7 @@ package org.terse.samples.guestbook.entity;
 import java.util.Date;
 
 /**
- * 创建人：xy
+ * 创建人：xy.
  * 创建时间：13-8-29
  *
  * post查询条件：在查询条件繁多的场景下使用

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<decorators defaultdir="/WEB-INF/decorators">
+    <decorators defaultdir="/WEB-INF/decorators">
 
-	<excludes>
-    </excludes>
+        <excludes>
+        </excludes>
 
-    <decorator name="list_create_edit_view" page="template_view.ftl">
-        <!--匹配guestbook下的所有Action。注意shtml后面的星号是为了匹配形如
-         localhost:8080/anything/guestboot/edit.shtml?id=123
-         -->
-		<pattern>*/guestbook/*.shtml*</pattern>
-    </decorator>
+        <decorator name="list_create_edit_view" page="template_view.ftl">
+            <!--匹配guestbook下的所有Action。注意shtml后面的星号是为了匹配形如
+             localhost:8080/anything/guestboot/edit.shtml?id=123
+             -->
+            <pattern>*/guestbook/*.shtml*</pattern>
+        </decorator>
 
-</decorators>
+    </decorators>
