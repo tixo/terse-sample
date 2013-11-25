@@ -9,10 +9,6 @@
         <interceptors>
             <interceptor-stack name="platformBaseStack">
                 <interceptor-ref name="baseStack" />
-                <!--
-                <interceptor-ref name="recordInterceptor"/>
-
-                -->
             </interceptor-stack>
         </interceptors>
         <default-interceptor-ref name="platformBaseStack" />
